@@ -4,7 +4,6 @@ package com.bridgelabz.addressbook.controller;
 import com.bridgelabz.addressbook.DTO.AddressBookDTO;
 import com.bridgelabz.addressbook.DTO.ResponseDTO;
 import com.bridgelabz.addressbook.Model.AddressBook;
-import com.bridgelabz.addressbook.repository.AddressBookRepository;
 import com.bridgelabz.addressbook.service.AddressBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,9 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
-//Created controller class to make api calls
 @RestController
 @RequestMapping("/addressbook")
 public class AddressBookController {
@@ -37,7 +34,7 @@ public class AddressBookController {
     }
 
     //Add the address to the addressbook
-    @PostMapping("/create")
+    @PostMapping("/post")
     public ResponseEntity<ResponseDTO> postData(@RequestBody AddressBookDTO addressBookDTO) {
         AddressBook newContact = service.saveAddress(addressBookDTO);
         ResponseDTO response = new ResponseDTO("New Contact Added in Addressbook : ", newContact);
