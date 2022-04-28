@@ -4,7 +4,6 @@ package com.bridgelabz.addressbook.controller;
 import com.bridgelabz.addressbook.DTO.AddressBookDTO;
 import com.bridgelabz.addressbook.DTO.ResponseDTO;
 import com.bridgelabz.addressbook.Model.AddressBook;
-import com.bridgelabz.addressbook.repository.AddressBookRepository;
 import com.bridgelabz.addressbook.service.AddressBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-//Created controller class to make api calls
 @RestController
 @RequestMapping("/addressbook")
 public class AddressBookController {
@@ -45,12 +43,11 @@ public class AddressBookController {
     }
 
     //Get  specific through id passed as variable address from address book
-    @GetMapping("/get/{id}")
-    public ResponseEntity<AddressBook> retriveData(@PathVariable Integer id) {
-        ResponseDTO response = new ResponseDTO("Addressbook of given id: ", service.getAddressbyId(id));
-        return new ResponseEntity(response, HttpStatus.OK);
+    public ResponseEntity<AddressBook> getDataFromRepoById(@PathVariable Integer id) {
+        Optional<AddressBook> addressBook = service.getDataById(id);
+        ResponseDTO dto = new ResponseDTO("Data",addressBook);
+        return new ResponseEntity(dto, HttpStatus.OK);
     }
-
     //Update  address through id passed as variable address from address book
     @PutMapping("/update/{id}")
     public ResponseEntity<ResponseDTO> updateById(@PathVariable Integer id, @RequestBody AddressBookDTO addressBookDTO) {
