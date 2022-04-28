@@ -42,12 +42,11 @@ public class AddressBookController {
     }
 
     //Get  specific through id passed as variable address from address book
-    @GetMapping("/get/{id}")
-    public ResponseEntity<AddressBook> retriveData(@PathVariable Integer id) {
-        ResponseDTO response = new ResponseDTO("Addressbook of given id: ", service.getAddressbyId(id));
-        return new ResponseEntity(response, HttpStatus.OK);
+    public ResponseEntity<AddressBook> getDataFromRepoById(@PathVariable Integer id) {
+        Optional<AddressBook> addressBook = service.getDataById(id);
+        ResponseDTO dto = new ResponseDTO("Data",addressBook);
+        return new ResponseEntity(dto, HttpStatus.OK);
     }
-
     //Update  address through id passed as variable address from address book
     @PutMapping("/update/{id}")
     public ResponseEntity<ResponseDTO> updateById(@PathVariable Integer id, @RequestBody AddressBookDTO addressBookDTO) {
