@@ -54,7 +54,7 @@ public class AddressBookController {
     }
 
     //Delete  data by id in the repository
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteAddress(@PathVariable Integer id) {
         repository.deleteById(id);
         return "Address of id: " + id + " has been deleted";
