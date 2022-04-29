@@ -12,11 +12,11 @@ import javax.validation.constraints.Pattern;
 @Data
 public class AddressBookDTO {
     @NotEmpty(message="First name cant be empty")
-    @Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Employee firstName is Invalid")
+    @Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="AddressBook firstName is Invalid")
     private String firstName;
 
     @NotEmpty(message="Last name cant be empty")
-    @Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Employee lastName is Invalid")
+    @Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="AddressBook lastName is Invalid")
     private String lastName;
 
     @NotEmpty(message="Email cant be empty")
