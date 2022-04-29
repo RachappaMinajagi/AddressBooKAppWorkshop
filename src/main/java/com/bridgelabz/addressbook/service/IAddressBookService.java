@@ -1,21 +1,28 @@
 package com.bridgelabz.addressbook.service;
 
 import com.bridgelabz.addressbook.DTO.AddressBookDTO;
-import com.bridgelabz.addressbook.Model.AddressBook;
+import com.bridgelabz.addressbook.Model.AddressBookData;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IAddressBookService {
 
-    public AddressBook saveAddress(AddressBookDTO addressBookDTO);
+    //save data to repository
+    String createAddressBookData(AddressBookDTO addressBookDTO);
 
-    public List<AddressBook> getListOfAddresses();
+    //get All Data from token
+    List<AddressBookData> getAddressBookDataByToken(String token);
 
-    public Optional<AddressBook> getDataById(Integer id);
 
-    public AddressBook updateDateById(Integer id, AddressBookDTO addressBookDTO);
+    //get records created for particular id by generating token for that id
+    AddressBookData getRecordByToken(String token);
 
-    public void deleteContact(Integer id);
 
+    //update records by providing token generated for particular id
+    AddressBookData updateRecordByToken(String token, AddressBookDTO addressBookDTO);
+
+
+
+    //deleted records by token
+    AddressBookData deleteRecordByToken(String token);
 }

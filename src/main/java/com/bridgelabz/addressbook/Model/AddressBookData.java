@@ -3,22 +3,16 @@ package com.bridgelabz.addressbook.Model;
 import com.bridgelabz.addressbook.DTO.AddressBookDTO;
 import lombok.Data;
 
-import javax.persistence.*;
-
 //Created AddressBook class with different fields
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
-
-import lombok.Data;
-
 //Created AddressBook class with different fields
 @Entity
 @Data
-public class AddressBook {
+public class AddressBookData {
         @Id
         @GeneratedValue(strategy=GenerationType.AUTO)
         private Integer id;
@@ -32,11 +26,11 @@ public class AddressBook {
         private Integer zip;
 
 
-        public AddressBook() {
+        public AddressBookData() {
                 super();
         }
-        public AddressBook(Integer id, String firstName, String lastName, String email, long phoneNumber, String city,
-                           String state, Integer zip) {
+        public AddressBookData(Integer id, String firstName, String lastName, String email, long phoneNumber, String city,
+                               String state, Integer zip) {
                 super();
                 this.id = id;
                 this.firstName = firstName;
@@ -47,7 +41,7 @@ public class AddressBook {
                 this.state = state;
                 this.zip = zip;
         }
-        public AddressBook(AddressBookDTO addressBookDTO) {
+        public AddressBookData(AddressBookDTO addressBookDTO) {
                 this.firstName = addressBookDTO.getFirstName();
                 this.lastName = addressBookDTO.getLastName();
                 this.email = addressBookDTO.getEmail();
@@ -56,7 +50,7 @@ public class AddressBook {
                 this.state = addressBookDTO.getCity();
                 this.zip = addressBookDTO.getZip();
         }
-        public AddressBook(Integer id,AddressBookDTO addressBookDTO) {
+        public AddressBookData(Integer id, AddressBookDTO addressBookDTO) {
                 this.id=id;
                 this.firstName = addressBookDTO.getFirstName();
                 this.lastName = addressBookDTO.getLastName();
