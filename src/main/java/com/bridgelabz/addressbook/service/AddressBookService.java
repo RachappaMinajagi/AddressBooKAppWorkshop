@@ -34,10 +34,9 @@ public class AddressBookService implements IAddressBookService {
         String token = tokenUtility.createToken(newAddress.getId());
         sender.sendEmail(newAddress.getEmail(), "Test Email", "Registered SuccessFully, hii: "
                 + newAddress.getFirstName() + "Please Click here to get data-> "
-                + "http://localhost:8080/addressBook/retrieve/" + token);
+                + "http://localhost:8080/addressBook/get/" + token);
         return token;
     }
-
 
     public AddressBookData updateRecordByToken(String token, AddressBookDTO addressBookDTO) {
         Integer id = tokenUtility.decodeToken(token);
@@ -49,7 +48,7 @@ public class AddressBookService implements IAddressBookService {
         addressBookRepository.save(newBook);
         sender.sendEmail(newBook.getEmail(), "Test Email", "Updated SuccessFully, hii: "
                 + newBook.getFirstName() + "Please Click here to get data of updated id-> "
-                + "http://localhost:8080/addressBook/retrieve/" + token);
+                + "http://localhost:8080/addressBook/get/" + token);
         return newBook;
     }
 
@@ -64,7 +63,7 @@ public class AddressBookService implements IAddressBookService {
             addressBookRepository.deleteById(id);
             sender.sendEmail("rachotism@gmail.com", "Test Email", "Deleted SuccessFully, hii: "
                     + addressBook.get() + "Please Click here to get data-> "
-                    + "http://localhost:8080/addressBook/retrieve/" + token);
+                    + "http://localhost:8080/addressBook/get/" + token);
         }
         return null;
     }
@@ -93,9 +92,9 @@ public class AddressBookService implements IAddressBookService {
             log.warn("Unable to find address book details for given id: " + id);
             throw new AddressBookException("Address Book Details not found for that particular id");
         } else {
-            sender.sendEmail("rachotism@gmail.com", "Test Email", "Deleted SuccessFully, hii: "
+            sender.sendEmail("rachotism@gmail.com", "Test Email", "Deleted SuccessFully, Hello: "
                     + newAddressBook.get().getEmail() + "Please Click here to get data-> "
-                    + "http://localhost:8080/addressBook/retrieve/" + token);
+                    + "http://localhost:8080/addressBook/get/" + token);
 
             return newAddressBook.get();
         }
